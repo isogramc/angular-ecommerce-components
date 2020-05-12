@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-product-list',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
+  @Input() productId: number;
+  @Input() productName: string;
+  @Input() activeSelection: boolean;
+  color = '';
+  @Output() selectedProductChangedEvent = new EventEmitter();
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+  }
+
+  selectedProductChanged(){
+    this.activeSelection = !this.activeSelection;
+    console.log(this.productId, this.activeSelection);
+    this.selectedProductChangedEvent.emit({
+      productId: this.productId,
+      activeSelection: this.activeSelection,
+    });
   }
 
 }

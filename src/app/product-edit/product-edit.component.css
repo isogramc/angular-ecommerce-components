@@ -1,17 +1,33 @@
+h3{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.close{
+  color:red;
+  font-weight: bold;
+  position: absolute;
+  margin: 5px 373px;
+  font-size: 24px;
+  line-height: 14px;
+  position: absolute;
+}
+
 .card {
   border-radius: 4px;
   border: 1px solid #eee;
   background-color: #fafafa;
-  height: 350px;
+  height: 400px;
   width: 350px;
   margin: 0 8px 16px;
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: left;
-  align-items: flex-start;
+  align-items: flex-end;
   transition: all 0.2s ease-in-out;
-  line-height: 8px;
+  line-height: 2px;
 }
 
 button {
