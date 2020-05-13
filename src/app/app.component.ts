@@ -54,6 +54,7 @@ export class AppComponent implements OnInit {
       this.productToUpdate.productName = data.updatedname;
     }
     console.log('tosave', data);
+    this.toggleEditProduct();
   }
 
   findProducts(p){
