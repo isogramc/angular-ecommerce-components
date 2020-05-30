@@ -50,7 +50,8 @@
             [productId]="product.productId"
             [productName]="product.productName"
             [activeSelection]="isProductSelected"
-            (selectedProductChangedEvent)="showProduct($event)">
+            (selectedProductChangedEvent)="showProduct($event)"
+            (deleteSelectedProductEvent)="deleteSelectedProduct($event)">
         </app-product-list>
     </div>
   </div>

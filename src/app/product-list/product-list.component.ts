@@ -12,6 +12,7 @@ export class ProductListComponent implements OnInit {
   @Input() activeSelection: boolean;
   color = '';
   @Output() selectedProductChangedEvent = new EventEmitter();
+  @Output() deleteSelectedProductEvent = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -21,6 +22,14 @@ export class ProductListComponent implements OnInit {
     this.activeSelection = !this.activeSelection;
     console.log(this.productId, this.activeSelection);
     this.selectedProductChangedEvent.emit({
+      productId: this.productId,
+      activeSelection: this.activeSelection,
+    });
+  }
+
+  deleteSelectedProduct(){
+    console.log(this.productId, this.activeSelection);
+    this.deleteSelectedProductEvent.emit({
       productId: this.productId,
       activeSelection: this.activeSelection,
     });

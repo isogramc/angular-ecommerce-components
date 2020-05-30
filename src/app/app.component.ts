@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
   }
 
   deleteSelectedProduct(data){
-    delete this.products[data.productId];
+    delete this.products[data.productId-1];
     console.log(this.products);
   }
   
