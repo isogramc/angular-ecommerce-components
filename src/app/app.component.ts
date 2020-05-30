@@ -57,6 +57,31 @@ export class AppComponent implements OnInit {
     this.toggleEditProduct();
   }
 
+  addNewProduct(data){
+    // When adding a new record to a DB through an API, I probably would have pushed a single entry to an auto incrementing Dataset to prevent duplicate ids, but for the example I did this
+     let prodFrame = {
+      productId: this.products.length + 1,
+      productName: data.updatedname,
+      productCode: (data.updatedname.substring(0,3)).toUpperCase() + '-' +(this.products.length + 1),
+      price: data.prodPrice,
+      description: data.prodDescr,
+      starRating: data.prodRate,
+      imageUrl: data.prodImgUrl,
+      imageUrlfrnt: data.prodImgFront,
+      imageUrlBack: data.prodImgBack,
+      inStock: data.prodInStock,
+      stock: data.updatedstockvalue
+    }
+    this.products.push(prodFrame);
+    console.log(this.products);
+  }
+
+  deleteSelectedProduct(data){
+    delete this.products[data.productId];
+    console.log(this.products);
+  }
+  
+
   findProducts(p){
     return p.productId === this[0];
   }
