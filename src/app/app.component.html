@@ -45,6 +45,7 @@
     <div *ngIf="(products.length == 0)">
         <td colspan="99" style="text-align: center">No results found</td>
     </div>
+    <img src="edit1.png" />
     <div *ngFor="let product of products">
         <app-product-list
             [productId]="product.productId"
