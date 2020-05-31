@@ -61,7 +61,7 @@ export class ProductEditComponent implements OnInit {
 
   productUpdate(){
     this.productEditSelection = !this.productEditSelection;
-    console.log(this.productEditSelection);
+    //console.log(this.productEditSelection);
     this.selectedProductSaveEvent.emit({
       productId: this.productId,
       updatedstockvalue: this.updatedstockvalue,

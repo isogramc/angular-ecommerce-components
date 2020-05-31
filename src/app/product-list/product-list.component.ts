@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
 
   selectedProductChanged(){
     this.activeSelection = !this.activeSelection;
-    console.log(this.productId, this.activeSelection);
+    //console.log(this.productId, this.activeSelection);
     this.selectedProductChangedEvent.emit({
       productId: this.productId,
       activeSelection: this.activeSelection,
@@ -28,7 +28,7 @@ export class ProductListComponent implements OnInit {
   }
 
   deleteSelectedProduct(){
-    console.log(this.productId, this.activeSelection);
+    //console.log(this.productId, this.activeSelection);
     this.deleteSelectedProductEvent.emit({
       productId: this.productId,
       activeSelection: this.activeSelection,
