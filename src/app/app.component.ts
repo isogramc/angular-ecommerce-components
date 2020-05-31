@@ -59,7 +59,6 @@ export class AppComponent implements OnInit {
 
   createNewProduct(){
     console.log('adding new product');
-    // this.toggleEditProduct();
     this.toggleEditProduct();
     this.toggleViewProduct();
   }
@@ -84,6 +83,8 @@ export class AppComponent implements OnInit {
     this.products.push(prodFrame);
     console.log(this.products);
 
+    this.toggleEditProduct();
+    this.toggleViewProduct();
   }
 
   deleteSelectedProduct(data){
