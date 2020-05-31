@@ -13,6 +13,7 @@ export class ProductEditComponent implements OnInit {
   @Input() productEditSelection: boolean;
 
   @Output() selectedProductSaveEvent = new EventEmitter();
+  @Output() addProductEvent = new EventEmitter();
 
   @Input() userProductSelection: any;
 
@@ -29,17 +30,22 @@ export class ProductEditComponent implements OnInit {
   imageWidth = 50;
 
   ngOnInit(): void {
-    this.productId = this.userProductSelection.productId;
-    this.updatedname = this.userProductSelection.productName;
-    this.productCode = this.userProductSelection.productCode;
-    this.updatedprice = this.userProductSelection.price;
-    this.updateddescription = this.userProductSelection.description;
-    this.updatedstarrating = this.userProductSelection.starRating;
-    // this.imageUrl = this.userProductSelection.imageUrl;
-    this.updatedimageUrl = this.userProductSelection.imageUrlfrnt;
-    // this.imageUrlBack = this.userProductSelection.imageUrlBack;
-    // this.inStock = this.userProductSelection.inStock;
-    // this.updatedstockvalue = this.userProductSelection.stock;
+    this.productEditSelection = false;
+    if(this.userProductSelection.productId!==null&&this.userProductSelection.productId!==undefined){
+      this.productEditSelection = true;
+      this.productId = this.userProductSelection.productId;
+      this.updatedname = this.userProductSelection.productName;
+      this.productCode = this.userProductSelection.productCode;
+      this.updatedprice = this.userProductSelection.price;
+      this.updateddescription = this.userProductSelection.description;
+      this.updatedstarrating = this.userProductSelection.starRating;
+      // this.imageUrl = this.userProductSelection.imageUrl;
+      this.updatedimageUrl = this.userProductSelection.imageUrlfrnt;
+      // this.imageUrlBack = this.userProductSelection.imageUrlBack;
+      // this.inStock = this.userProductSelection.inStock;
+      // this.updatedstockvalue = this.userProductSelection.stock;
+    }
+    
   }
 
   ngOnChanges() {
@@ -49,11 +55,25 @@ export class ProductEditComponent implements OnInit {
     console.log('change');*/
   }
 
-  selectedProductSave(){
+  productUpdate(){
     this.productEditSelection = !this.productEditSelection;
     console.log(this.productEditSelection);
     this.selectedProductSaveEvent.emit({
       productId: this.productId,
+      updatedstockvalue: this.updatedstockvalue,
+      productEditSelection: this.productEditSelection,
+      updatedimageUrl: this.updatedimageUrl,
+      updatedstarrating: this.updatedstarrating,
+      updateddescription: this.updateddescription,
+      updatedprice: this.updatedprice,
+      updatedname: this.updatedname
+    });
+  }
+
+  addProduct(){
+    console.log("Save now");
+    this.productEditSelection = !this.productEditSelection;
+    this.addProductEvent.emit({
       updatedstockvalue: this.updatedstockvalue,
       productEditSelection: this.productEditSelection,
       updatedimageUrl: this.updatedimageUrl,

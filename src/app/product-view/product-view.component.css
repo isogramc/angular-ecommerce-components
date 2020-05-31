@@ -20,8 +20,4 @@ button {
   border-radius: 9px;
 }
 
-.button-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-}
+

@@ -1,14 +1,18 @@
 <div class="card-container">
 <div class="card">
       <h3 style="align-items: center">Editing {{ productCode }}</h3>
-      <p>Udate Display Name: <input [(ngModel)]="updatedname" /></p>
-      <p>New Price: <input [(ngModel)]="updatedprice" /></p>
-      <p>New Description: <input [(ngModel)]="updateddescription" /></p>
-      <p>Udated Rating: <input [(ngModel)]="updatedstarrating" /></p>
+      <h3 style="align-items: center">New Product</h3>
+      <p>Display Name: <input [(ngModel)]="updatedname" /></p>
+      <p>Price: <input [(ngModel)]="updatedprice" /></p>
+      <p>Description: <input [(ngModel)]="updateddescription" /></p>
+      <p>Rating: <input [(ngModel)]="updatedstarrating" /></p>
         <!--<p><img [src]="imageUrl"> </p>-->
-      <p>Updated Url: <input [(ngModel)]="updatedimageUrl" /></p>
+      <p>Url: <input [(ngModel)]="updatedimageUrl" /></p>
         <!--<p>inStock: false</p>-->
       <p>Stock Added: <input [(ngModel)]="updatedstockvalue" /></p>
-      <button (click)="selectedProductSave()">Save</button>
+      <div class="button-container">
+        <button (click)="addProduct()">Add</button>
+        <button (click)="productUpdate()">Update</button>
+      </div>      
 </div>
 </div>

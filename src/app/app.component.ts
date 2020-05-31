@@ -57,7 +57,16 @@ export class AppComponent implements OnInit {
     this.toggleEditProduct();
   }
 
+  createNewProduct(){
+    console.log('adding new product');
+    // this.toggleEditProduct();
+    this.toggleEditProduct();
+    this.toggleViewProduct();
+  }
+
   addNewProduct(data){
+    console.log('add product data', data);
+    
     // When adding a new record to a DB through an API, I probably would have pushed a single entry to an auto incrementing Dataset to prevent duplicate ids, but for the example I did this
      let prodFrame = {
       productId: this.products.length + 1,
@@ -74,6 +83,7 @@ export class AppComponent implements OnInit {
     }
     this.products.push(prodFrame);
     console.log(this.products);
+
   }
 
   deleteSelectedProduct(data){
@@ -86,8 +96,7 @@ export class AppComponent implements OnInit {
    });
 
    console.log(this.products);
-   this.toggleViewProduct();
-  
+    this.toggleViewProduct();
   }
   
 
