@@ -10,6 +10,7 @@ export class ProductViewComponent implements OnInit {
   @Input() userProductSelection: any;
   @Input() productEditSelection: boolean;
   @Output() updateProductChangedEvent = new EventEmitter();
+  @Output() deleteProductChangedEvent = new EventEmitter();
 
   productId: string;
   productName: string;
@@ -46,6 +47,15 @@ export class ProductViewComponent implements OnInit {
     this.productEditSelection = !this.productEditSelection;
     console.log(this.productId, this.productEditSelection);
     this.updateProductChangedEvent.emit({
+      productId: this.productId,
+      productEditSelection: this.productEditSelection
+    });
+  }
+
+  deleteProduct(){
+    this.productEditSelection = !this.productEditSelection;
+    console.log(this.productId, this.productEditSelection);
+    this.deleteProductChangedEvent.emit({
       productId: this.productId,
       productEditSelection: this.productEditSelection
     });

@@ -60,7 +60,8 @@
   <app-product-view
     [userProductSelection]="productToShow"
     [productEditSelection]="isProductEditMode"
-    (updateProductChangedEvent)="updateProduct($event)">
+    (updateProductChangedEvent)="updateProduct($event)"
+    (deleteProductChangedEvent)="deleteSelectedProduct($event)">
   </app-product-view>
 </div>
 <div class="container" *ngIf="isProductEditMode">

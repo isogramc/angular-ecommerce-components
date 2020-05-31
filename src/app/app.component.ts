@@ -77,9 +77,17 @@ export class AppComponent implements OnInit {
   }
 
   deleteSelectedProduct(data){
-  // this works, but the UI is not updating, just the object, so I would probably in cases like this put in an extra step to view product so that the controls can refresh dynamically. Also it leaves the references where there used to be an object as an empty placeholder
-    delete this.products[data.productId-1];
-    console.log(this.products);
+    // delete this.products[data.productId-1];
+
+     this.products.forEach( (item, index) => {
+       if(item.productId === data.productId) {
+          this.products.splice(index,1)
+       };
+   });
+
+   console.log(this.products);
+   this.toggleViewProduct();
+  
   }
   
 
