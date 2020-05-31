@@ -11,13 +11,14 @@ export class ProductEditComponent implements OnInit {
   @Input() count: any;
 
   @Input() productEditSelection: boolean;
+  @Input() addNewProductMode: boolean;
 
   @Output() selectedProductSaveEvent = new EventEmitter();
   @Output() addProductEvent = new EventEmitter();
 
   @Input() userProductSelection: any;
 
-  productId: string;
+  productId=-1;
   productCode: string;
 
   updatedstockvalue: any;
@@ -30,9 +31,12 @@ export class ProductEditComponent implements OnInit {
   imageWidth = 50;
 
   ngOnInit(): void {
-    this.productEditSelection = false;
-    if(this.userProductSelection.productId!==null&&this.userProductSelection.productId!==undefined){
-      this.productEditSelection = true;
+    //console.log('addMode', this.addNewProductMode);
+    //console.log(this);
+    //console.log(this.productId, this.addNewProductMode);
+
+    if(!this.addNewProductMode){
+      
       this.productId = this.userProductSelection.productId;
       this.updatedname = this.userProductSelection.productName;
       this.productCode = this.userProductSelection.productCode;
@@ -71,8 +75,9 @@ export class ProductEditComponent implements OnInit {
   }
 
   addProduct(){
-    console.log("Save now");
+    //console.log("Save now");
     this.productEditSelection = !this.productEditSelection;
+    this.addNewProductMode = !this.addNewProductMode;
     this.addProductEvent.emit({
       updatedstockvalue: this.updatedstockvalue,
       productEditSelection: this.productEditSelection,

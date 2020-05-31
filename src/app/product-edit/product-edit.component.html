@@ -1,7 +1,7 @@
 <div class="card-container">
 <div class="card">
-      <h3 style="align-items: center">Editing {{ productCode }}</h3>
-      <h3 style="align-items: center">New Product</h3>
+      <h3 *ngIf="!addNewProductMode" style="align-items: center">Editing {{ productCode }}</h3>
+      <h3 *ngIf="addNewProductMode" style="align-items: center">New Product</h3>
       <p>Display Name: <input [(ngModel)]="updatedname" /></p>
       <p>Price: <input [(ngModel)]="updatedprice" /></p>
       <p>Description: <input [(ngModel)]="updateddescription" /></p>
@@ -11,8 +11,8 @@
         <!--<p>inStock: false</p>-->
       <p>Stock Added: <input [(ngModel)]="updatedstockvalue" /></p>
       <div class="button-container">
-        <button (click)="addProduct()">Add</button>
-        <button (click)="productUpdate()">Update</button>
+        <button *ngIf="addNewProductMode" (click)="addProduct()">Add</button>
+        <button *ngIf="!addNewProductMode" (click)="productUpdate()">Update</button>
       </div>      
 </div>
 </div>

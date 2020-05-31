@@ -66,8 +66,11 @@
   </app-product-view>
 </div>
 <div class="container" *ngIf="isProductEditMode">
-<div class="close" (click)="toggleEditProduct()">x</div>
+<div *ngIf="!isAddProductMode" class="close" (click)="toggleEditProduct()">x</div>
+<div *ngIf="isAddProductMode" class="close" (click)="toggleAddProduct()">x</div>
   <app-product-edit
+    [productEditSelection]="isProductEditMode"
+    [addNewProductMode]="isAddProductMode"
     [userProductSelection]="productToShow"
     (addProductEvent)="addNewProduct($event)" 
     (selectedProductSaveEvent)="saveProduct($event)">

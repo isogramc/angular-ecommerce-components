@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   productToUpdate: any;
   isProductSelected = false;
   isProductEditMode = false;
+  isAddProductMode = false;
 
   ngOnInit(){
     // console.log(this.mChild);
@@ -30,20 +31,25 @@ export class AppComponent implements OnInit {
     this.isProductSelected = !this.isProductSelected;
   }
 
+  toggleAddProduct(){
+    this.isProductEditMode = !this.isProductEditMode;
+    this.isAddProductMode = !this.isAddProductMode;
+  }
+
+
   showProduct(data){
     this.isProductSelected = data.activeSelection;
     this.productToShow = this.products.find(this.findProducts, [data.productId]);
   }
 
   updateProduct(data){
-    console.log(data);
     this.isProductEditMode = data.productEditSelection;
     // this.productToShow = this.products.find(this.findProducts, [data.productId]);
-    console.log(this.productToShow);
+    //console.log(this.productToShow);
   }
 
   saveProduct(data){
-    console.log('tosave', data);
+    //console.log('tosave', data);
     this.productToUpdate = this.products.find(this.findProducts, [data.productId]);
     this.productToUpdate.stock = this.productToUpdate.stock + parseInt('10', data.updatedstockvalue);
     this.productToUpdate.price = parseFloat(data.updatedprice);
@@ -53,38 +59,37 @@ export class AppComponent implements OnInit {
     if (data.updatedname !== ''){
       this.productToUpdate.productName = data.updatedname;
     }
-    console.log('tosave', data);
+    //console.log('tosave', data);
     this.toggleEditProduct();
   }
 
   createNewProduct(){
-    console.log('adding new product');
-    this.toggleEditProduct();
-    this.toggleViewProduct();
+    //console.log('adding new product');
+    //console.log(this.isAddProductMode);
+    this.toggleAddProduct();
   }
 
   addNewProduct(data){
-    console.log('add product data', data);
+    //console.log('add product data', data);
     
     // When adding a new record to a DB through an API, I probably would have pushed a single entry to an auto incrementing Dataset to prevent duplicate ids, but for the example I did this
      let prodFrame = {
       productId: this.products.length + 1,
       productName: data.updatedname,
-      productCode: (data.updatedname.substring(0,3)).toUpperCase() + '-' +(this.products.length + 1),
-      price: data.prodPrice,
-      description: data.prodDescr,
-      starRating: data.prodRate,
-      imageUrl: data.prodImgUrl,
-      imageUrlfrnt: data.prodImgFront,
-      imageUrlBack: data.prodImgBack,
-      inStock: data.prodInStock,
+      productCode: (data.updatedname.substring(0,4)).trim().toUpperCase() + '-' +(this.products.length + 1),
+      price: data.updatedprice,
+      description: data.updateddescription,
+      starRating: data.updatedstarrating,
+      imageUrl: data.updatedimageUrl,
+      imageUrlfrnt: data.updatedimageUrl,
+      inStock: ((data.updatedstockvalue>0)?true:false),
       stock: data.updatedstockvalue
     }
     this.products.push(prodFrame);
-    console.log(this.products);
+    //console.log(this.products);
 
-    this.toggleEditProduct();
-    this.toggleViewProduct();
+    this.isProductEditMode = data.productEditSelection;
+    this.isAddProductMode = data.addNewProduct;
   }
 
   deleteSelectedProduct(data){
@@ -95,8 +100,6 @@ export class AppComponent implements OnInit {
           this.products.splice(index,1)
        };
    });
-
-   console.log(this.products);
     this.toggleViewProduct();
   }
   
