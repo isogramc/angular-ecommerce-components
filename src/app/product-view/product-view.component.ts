@@ -45,7 +45,7 @@ export class ProductViewComponent implements OnInit {
 
   updateProduct(){
     this.productEditSelection = !this.productEditSelection;
-    console.log(this.productId, this.productEditSelection);
+    //console.log(this.productId, this.productEditSelection);
     this.updateProductChangedEvent.emit({
       productId: this.productId,
       productEditSelection: this.productEditSelection
@@ -54,7 +54,7 @@ export class ProductViewComponent implements OnInit {
 
   deleteProduct(){
     this.productEditSelection = !this.productEditSelection;
-    console.log(this.productId, this.productEditSelection);
+    //console.log(this.productId, this.productEditSelection);
     this.deleteProductChangedEvent.emit({
       productId: this.productId,
       productEditSelection: this.productEditSelection

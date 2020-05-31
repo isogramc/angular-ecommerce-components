@@ -48,8 +48,9 @@ export class AppComponent implements OnInit {
   }
 
   saveProduct(data){
+    console.log(data.updatedstockvalue, typeof data.updatedprice);
     this.productToUpdate = this.products.find(this.findProducts, [data.productId]);
-    this.productToUpdate.stock = this.productToUpdate.stock + parseInt('10', data.updatedstockvalue);
+    this.productToUpdate.stock = parseInt(this.productToUpdate.stock) + parseInt(data.updatedstockvalue);
     this.productToUpdate.price = parseFloat(data.updatedprice);
     this.productToUpdate.description = data.updateddescription;
     this.productToUpdate.starRating = parseFloat(data.updatedstarrating);
@@ -77,7 +78,7 @@ export class AppComponent implements OnInit {
       imageUrl: data.updatedimageUrl,
       imageUrlfrnt: data.updatedimageUrl,
       inStock: ((data.updatedstockvalue>0)?true:false),
-      stock: data.updatedstockvalue
+      stock: parseInt(data.updatedstockvalue)
     }
     this.products.push(prodFrame);
 
